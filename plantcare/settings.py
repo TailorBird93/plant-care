@@ -13,9 +13,9 @@ env = environ.Env(
 )
 environ.Env.read_env()
 
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
