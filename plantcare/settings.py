@@ -5,23 +5,23 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-# Read .env file
+
 environ.Env.read_env()
 
-# Debugging: Ensure the .env file is being loaded
+
 print("Environment file loaded:", os.path.exists(BASE_DIR / '.env'))
 
-# Load environment variables
-TREFLE_API_KEY = os.getenv('TREFLE_API_KEY')  # Use env for TREFLE_API_KEY
-SECRET_KEY = os.getenv('SECRET_KEY')          # Use env for SECRET_KEY
-DEBUG = os.getenv('DEBUG')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='').split(',')  # Split ALLOWED_HOSTS
 
-# Debugging: Print out variables to verify they are being loaded correctly
+TREFLE_API_KEY = os.getenv('TREFLE_API_KEY') 
+SECRET_KEY = os.getenv('SECRET_KEY')          
+DEBUG = os.getenv('DEBUG')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='').split(',')  
+
+
 print(f"SECRET_KEY: {SECRET_KEY}")
 print(f"TREFLE_API_KEY: {TREFLE_API_KEY}")
 
-# Static and media files settings
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -29,7 +29,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
-# Application definition
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'care',
 ]
 
-# Middleware settings
+# Middleware 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -73,7 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plantcare.wsgi.application'
 
-# Database configuration
+# Database 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -88,12 +88,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files settings
+
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
