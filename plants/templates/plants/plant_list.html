@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Plant List</h2>
+<form method="GET" action="{% url 'plant-list' %}">
+    <input type="text" name="q" placeholder="Search plants..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<ul>
+    {% for plant in plants %}
+        <li>
+            {{ plant.common_name }} ({{ plant.scientific_name }})
+            <a href="{% url 'plant-detail' plant.pk %}">View Details</a>
+        </li>
+    {% empty %}
+        <li>No plants found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

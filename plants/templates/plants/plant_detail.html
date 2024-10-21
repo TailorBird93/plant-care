@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ plant.common_name }}</h2>
+{% if plant.image_url %}
+    <img src="{{ plant.image_url }}" alt="{{ plant.common_name }}" width="300">
+{% else %}
+    <p>No image available.</p>
+{% endif %}
+<p><strong>Scientific Name:</strong> {{ plant.scientific_name }}</p>
+<p><strong>Family:</strong> {{ plant.family }}</p>
+<p><strong>Sunlight:</strong> Full sun</p>
+<p><strong>Water Requirements:</strong> Weekly</p>
+<p><strong>Soil Type:</strong> Loamy</p>
+<a href="{% url 'plant-list' %}">Back to Plant List</a>
+{% endblock %}

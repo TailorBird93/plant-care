@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Care Tasks</h2>
+<a href="{% url 'care-create' %}">Add New Task</a>
+<ul>
+    {% for task in care_tasks %}
+        <li>
+            {{ task.task }} for {{ task.plant.common_name }} - Due: {{ task.next_due }}
+            <a href="{% url 'care-update' task.pk %}">Edit</a>
+            <a href="{% url 'care-delete' task.pk %}" class="delete-button">Delete</a>
+        </li>
+    {% empty %}
+        <li>No care tasks available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
